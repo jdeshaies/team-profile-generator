@@ -1,5 +1,6 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
+const { off } = require("process");
 
 class Employee {
   constructor(name, id, email) {
@@ -21,6 +22,30 @@ class Employee {
   }
 }
 
+class Manager extends Employee {
+  constructor(name, id, email, officeNumber) {
+    super(name, id, email);
+    this.officeNumber = officeNumber;
+  }
+  getRole() {
+    return 'Manager';
+  }
+}
+
+class Engineer extends Employee {
+  constructor(name, id, email, github) {
+    super(name, id, email);
+    this.github = github;
+  }
+  getGithub() {
+    return this.github;
+  }
+  getRole() {
+    return 'Engineer';
+  }
+}
+
+
 inquirer
   .prompt([
     {
@@ -41,7 +66,7 @@ inquirer
     {
       type: "input",
       message: "Office Number",
-      name: "office",
+      name: "officeNumber",
     },
   ])
   .then(
