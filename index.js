@@ -18,7 +18,7 @@ class Employee {
     return this.email;
   }
   getRole() {
-    return 'Employee';
+    return "Employee";
   }
 }
 
@@ -28,7 +28,7 @@ class Manager extends Employee {
     this.officeNumber = officeNumber;
   }
   getRole() {
-    return 'Manager';
+    return "Manager";
   }
 }
 
@@ -41,7 +41,7 @@ class Engineer extends Employee {
     return this.github;
   }
   getRole() {
-    return 'Engineer';
+    return "Engineer";
   }
 }
 
@@ -54,10 +54,9 @@ class Intern extends Employee {
     return this.school;
   }
   getRole() {
-    return 'Intern';
+    return "Intern";
   }
 }
-
 
 inquirer
   .prompt([
@@ -83,5 +82,39 @@ inquirer
     },
   ])
   .then(
-    (response) => console.log(response), (err) => (err ? console.error(err) : console.log("Success!"))
+    (response) => console.log(response),
+    (err) => (err ? console.error(err) : console.log("Success!"))
   );
+
+// Create new manager, ask if new employee should be added?
+
+function addEmployee() {
+  inquirer
+    .prompt([
+      {
+        type: "list",
+        message: "Role:",
+        name: "role",
+        choices: ["Engineer", "Intern", "Finish Building Team"],
+      },
+      {
+        type: "input",
+        message: "Name:",
+        name: "name",
+      },
+      {
+        type: "input",
+        message: "ID:",
+        name: "id",
+      },
+      {
+        type: "input",
+        message: "email",
+        name: "email",
+      },
+    ])
+    .then(
+      (response) => console.log(response),
+      (err) => (err ? console.error(err) : console.log("Success!"))
+    );
+}
