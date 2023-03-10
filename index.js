@@ -2,43 +2,6 @@ const fs = require("fs");
 const inquirer = require("inquirer");
 const { off } = require("process");
 
-
-class Manager extends Employee {
-  constructor(name, id, email, officeNumber) {
-    super(name, id, email);
-    this.officeNumber = officeNumber;
-  }
-  getRole() {
-    return "Manager";
-  }
-}
-
-class Engineer extends Employee {
-  constructor(name, id, email, github) {
-    super(name, id, email);
-    this.github = github;
-  }
-  getGithub() {
-    return this.github;
-  }
-  getRole() {
-    return "Engineer";
-  }
-}
-
-class Intern extends Employee {
-  constructor(name, id, email, school) {
-    super(name, id, email);
-    this.school = school;
-  }
-  getSchool() {
-    return this.school;
-  }
-  getRole() {
-    return "Intern";
-  }
-}
-
 inquirer
   .prompt([
     {
